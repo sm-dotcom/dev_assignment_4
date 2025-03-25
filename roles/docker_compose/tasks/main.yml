@@ -1,0 +1,10 @@
+- name: Check if Docker Compose is installed
+  command: which docker-compose
+  register: compose_check
+  ignore_errors: true
+
+- name: Install Docker Compose using Homebrew
+  homebrew:
+    name: docker-compose
+    state: present
+  when: compose_check.rc != 0

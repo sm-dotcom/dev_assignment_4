@@ -1,0 +1,10 @@
+- name: Check if Nginx is installed
+  command: which nginx
+  register: nginx_check
+  ignore_errors: true
+
+- name: Install Nginx using Homebrew
+  homebrew:
+    name: nginx
+    state: present
+  when: nginx_check.rc != 0

@@ -1,0 +1,7 @@
+- name: Install Docker, Docker Compose, and Nginx on macOS
+  hosts: local
+  become: false
+  roles:
+    - docker
+    - docker_compose
+    - nginx

@@ -1,0 +1,10 @@
+- name: Check if Docker is installed
+  command: which docker
+  register: docker_check
+  ignore_errors: true
+
+- name: Install Docker using Homebrew
+  homebrew:
+    name: docker
+    state: present
+  when: docker_check.rc != 0
